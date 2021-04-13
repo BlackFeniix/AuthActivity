@@ -1,0 +1,2 @@
+com/hito/nikolay/devtesthh/BuildConfig.java
+ com.hito.nikolay.devtesthh.BuildConfig
