@@ -1,3 +1,2 @@
 # DevTestHH
-Test task for heads&amp;hands
-Тестовое задание для Heads&Hands
+Test task for Heads&amp;Hands
