@@ -5,16 +5,22 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.view.Menu
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
-import androidx.core.view.isInvisible
+import androidx.core.content.ContextCompat
 import com.google.android.gms.location.*
 import com.google.android.material.snackbar.Snackbar
 import com.hito.nikolay.devtesthh.extensions.isEmailValid
@@ -36,12 +42,23 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val imageButton = findViewById<ImageButton>(R.id.buttonPasswordRules)
-        imageButton.setOnClickListener {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_arrow_back_black_24_px)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            window.statusBarColor = Color.rgb(244, 244, 244)
+        }
+
+        val buttonPasswordRules = findViewById<ImageButton>(R.id.buttonPasswordRules)
+        buttonPasswordRules.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(this)
             alertDialogBuilder.apply {
                 setTitle("Правила ввода пароля")
@@ -53,7 +70,6 @@ class MainActivity : AppCompatActivity() {
 
         val enterButton = findViewById<Button>(R.id.buttonAuth)
         enterButton.setOnClickListener {
-
             val email = findViewById<EditText>(R.id.editTextTextEmailAddress).text.toString()
             val password = findViewById<EditText>(R.id.editTextPassword).text.toString()
 
@@ -73,15 +89,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        menu?.setGroupVisible(R.menu.menu, false)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     //Get the last location of the device
     @SuppressLint("MissingPermission")
     private fun getLastLocation(view: View) {
         if (checkPermissions() && isLocationEnable()) {
-            fusedLocationProviderClient.lastLocation.addOnSuccessListener { task ->
-                if (task == null) {
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                if (location == null) {
                     getNewLocation()
                 } else {
-                    getWeather(view, task)
+                    getWeather(view, location)
                 }
             }
         } else {
@@ -93,9 +115,9 @@ class MainActivity : AppCompatActivity() {
     // Get the new location of the device
     @SuppressLint("MissingPermission")
     private fun getNewLocation() {
-        val locationR = LocationRequest()
+        val locationRequest = LocationRequest()
         fusedLocationProviderClient.requestLocationUpdates(
-            locationR.apply {
+            locationRequest.apply {
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
                 interval = 0
                 fastestInterval = 0

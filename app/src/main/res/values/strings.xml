@@ -4,6 +4,6 @@
     <string name="password_hint">Пароль</string>
     <string name="email_hint">Электронная почта</string>
     <string name="toolbar_name_authorization">Авторизация</string>
-    <string name="create">создать</string>
+    <string name="create">СОЗДАТЬ</string>
     <string name="passwordRules">Условие ввода пароля</string>
 </resources>

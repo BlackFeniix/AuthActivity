@@ -4,8 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:transitionName="MainView">
+    android:transitionName="MainView"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="8sp"
+        android:minHeight="?attr/actionBarSize"
+        android:textColor="#3d3d3d"
+        android:textSize="20sp"
+        android:textStyle="normal"
+
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/toolbar_name_authorization" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:autofillHints="@string/email_hint"
+        android:background="@drawable/edit_text_back"
+        android:ems="10"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="16dp"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -14,6 +56,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints="@string/password_hint"
         android:background="@drawable/edit_text_back"
         android:ems="10"
         android:hint="@string/password_hint"
@@ -23,28 +66,20 @@
         android:paddingBottom="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
-        android:autofillHints="@string/password_hint" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/edit_text_back"
-        android:ems="10"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress"
-        android:paddingStart="16dp"
-        android:paddingTop="14dp"
-        android:paddingBottom="16dp"
-        android:singleLine="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:autofillHints="@string/email_hint" />
+    <ImageButton
+        android:id="@+id/buttonPasswordRules"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/passwordRules"
+        android:src="@drawable/ic_question"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
 
     <Button
         android:id="@+id/buttonAuth"
@@ -60,35 +95,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
-
-    <Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize"
-        android:navigationIcon="@drawable/ic_arrow_back_black_24_px"
-        android:theme="?attr/actionBarTheme"
-        android:title="@string/toolbar_name_authorization"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageButton
-        android:id="@+id/buttonPasswordRules"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_question"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
-        app:layout_constraintTop_toTopOf="@+id/editTextPassword"
-        android:contentDescription="@string/passwordRules" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

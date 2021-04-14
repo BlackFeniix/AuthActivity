@@ -4,5 +4,9 @@
     <item
         android:id="@+id/menuToolbar"
         android:title="@string/create"
-        app:showAsAction="always" />
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        app:showAsAction="always"
+        android:visible="false"/>
 </menu>
