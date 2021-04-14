@@ -20,12 +20,12 @@
         "source": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_question.png.flat",
         "source": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_question.png"
+    },
+    {
+        "merged": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\Nikolay\\Documents\\Android\\DevTestHH\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
